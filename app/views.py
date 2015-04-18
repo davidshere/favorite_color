@@ -42,10 +42,6 @@ def find():
 
 @app.route('/facts')
 def facts():
-  query = db.session.query(User.favorite, db.func.count(User.name)).group_by(User.favorite)
-  fact_table = query.all()
+  fact_table = db.session.query(User.favorite, db.func.count(User.name)).group_by(User.favorite).order_by(db.func.count(User.name).desc()).all()
   print fact_table
-
-  #User.query.get((User.favorite, func.count(User.name))).group_by(User.favorite).all()
-  #flash(fact_table)
   return render_template('facts.html')
