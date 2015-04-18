@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+  <body>
+    <form action="/index" method="post" name="index">
+      {{ form.hidden_tag() }}
+      <p>
+    	What's your name: 
+       {% for error in form.name.errors %}
+        <span style='color: red; font-size:66%;'>[{{error}}]</span>
+      {% endfor %}  
+      <br>
+        {{ form.name(size=80) }}<br>
+    	What's your favorite color:
+      {% for error in form.favorite.errors %}
+        <span style='color: red; font-size:66%;'>[{{error}}]</span>
+      {% endfor %}
+      <br>
+        {{ form.favorite }}<br>
+    </p>
+    <p><input type="submit" value="Submit"></p>
+    </form>
+{% endblock %}

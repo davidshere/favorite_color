@@ -1,0 +1,20 @@
+<html>
+  <head>
+  	<title>Favorite Color</title>
+  </head>
+  <body>
+  	<ol>
+  		<li><a href='/index'>Input your favorite color</a></li>
+  		<li><a href='/find'>Find your favorite color</a></li>
+                <li><a href='/facts'>Learn about people's favorite colors</a></li>
+  	</ol>
+        <hr>
+  {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <p>{{ message }}</p>
+        {% endfor %}
+     {% endif %}
+    {% endwith %}{% block content %}{% endblock %}
+  </body>
+</html>
